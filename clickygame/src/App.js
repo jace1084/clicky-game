@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Card from ".components/Card"
+import matches from "./matchcards.json";
+
+
+// set varibles to store your users guesses, score, and event message (in this case a "click" event). 
+// These varibles will be set as "let" becasue their values will change as the game goes along.
+
+// all values will be set to 0 to begin the game at 0.
+
+let correctGuesses = 0 
+let bestScore = 0
+let clickStatement =
 
 class App extends Component {
 

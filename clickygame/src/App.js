@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import matches from "./matchcards.json";
+const Shuffle = window.Shuffle;
 
 
 // set varibles to store your users guesses, score, and event message (in this case a "click" event). 
@@ -54,7 +55,7 @@ setClicked = id => {
   // increment the appropriate counter
   correctGuesses++;
 
-  clickMessage = "Great! You haven't click on that one yet! Keep going!";
+  clickMessage = "Victory is yours! You haven't selected that card yet";
 
   if (correctGuesses > bestScore){
       bestScore = correctGuesses;

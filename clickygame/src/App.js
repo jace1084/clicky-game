@@ -9,31 +9,34 @@ import matches from "./matchcards.json";
 
 // all values will be set to 0 to begin the game at 0.
 
-let correctGuesses = 0 
-let bestScore = 0
-let clickStatement =
+let correctGuesses = 0; 
+let bestScore = 0;
+let clickStatement = "Click on your favorite Family Guy character to earn points, but be sure to remember who you clicked...This is a memory game PEOPLE!";
+
+
 
 class App extends Component {
 
   state = {
-    images:["../assets/images/fbcleavland.jpg"],
-    score: 0,
-    highscore: 0
-  }
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-          <div>
-            {this.state.images.map(datum => imageSrc {datum})}
-          </div>
+    matches,
+    correctGuesses,
+    bestScore,
+    clickMessage
+};
 
-      </div>
-    );
-  }
+setClicked = => {
+  const matches = this.state.matches;
+  const clickedMatch = matches.filter(match => match.id === id);
+
+  // This statement says if the clicked match is true (already clicked), preform the "game-over" function. 
+
+  if(clickedMatch[0].clicked)
+
+  correctGuesses = 0;
+            clickMessage = "Dammit! You memory sucks! You clicked that already"
+
+            matches.map(match => match.id === id);
+            matches.clicked = false;
+
 }
-
 export default App;

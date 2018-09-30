@@ -1,52 +1,52 @@
 [
     {
       "id": 1,
-      "image": "./assets/images/fbcleavland.jpg",
+      "image": "./assets/images/fgcleavland.jpg",
       "clicked": false
     },
     {
         "id": 2,
-        "image": "./assets/images/fbbrian.jpg",
+        "image": "./assets/images/fgbrian.jpg",
         "clicked": false
       },
       {
         "id": 3,
-        "image": "./assets/images/fbchris.jpg",
+        "image": "./assets/images/fgchris.jpg",
         "clicked": false
       },
       {
         "id": 4,
-        "image": "./assets/images/fbevilmonkey.jpg",
+        "image": "./assets/images/fgevilmonkey.jpeg",
         "clicked": false
       },
       {
         "id": 5,
-        "image": "./assets/images/fblouis.jpg",
+        "image": "./assets/images/fglouis.jpg",
         "clicked": false
       },
       {
         "id": 6,
-        "image": "./assets/images/fbmeg.jpg",
+        "image": "./assets/images/fgmeg.jpeg",
         "clicked": false
       },
       {
         "id": 7,
-        "image": "./assets/images/fbpeter.jpg",
+        "image": "./assets/images/fgpeter.jpg",
         "clicked": false
       },
       {
         "id": 8,
-        "image": "./assets/images/fbquag.jpg",
+        "image": "./assets/images/fgquag.jpg",
         "clicked": false
       },
       {
         "id": 9,
-        "image": "./assets/images/fbstewie.jpg",
+        "image": "./assets/images/fgstewie.jpg",
         "clicked": false
       },
       {
         "id": 10,
-        "image": "./assets/images/fbtrump.jpg",
+        "image": "./assets/images/fgtrump.png",
         "clicked": false
       }
 ]

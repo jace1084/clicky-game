@@ -1,4 +1,4 @@
-.click-item {
+img {
     background-size: cover;
     background-position: center;
     height: 170px;
@@ -10,13 +10,13 @@
     cursor: pointer;
   }
   
-  .click-item:hover {
+  img:hover {
     transform: scale(1.05);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     transition: 0.1s;
   }
   
-  .shake {
+  /* .shake {
     animation: shake .5s 0.0125s;
   }
   
@@ -51,4 +51,4 @@
       margin: 10px;
     }
   }
-  
+   */

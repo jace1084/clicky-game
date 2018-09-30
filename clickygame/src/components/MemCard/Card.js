@@ -1,14 +1,12 @@
 import React from "react";
-import "./ClickItem.css";
+import "./Card.css";
 
-const ClickItem = props => (
-  <div
-    role="img"
-    aria-label="click item"
-    onClick={() => props.handleClick(props.id)}
-    style={{ backgroundImage: `url("${props.image}")` }}
-    className={`click-item${props.shake ? " shake" : ""}`}
-  />
+const Card = props => (
+	<div onClick={() => props.setClicked(props.id)} className="card">
+		<div className="img-container">
+      		<img alt={props.name} src={props.image} />
+    	</div>
+  </div>
 );
 
-export default ClickItem;
+export default Card;

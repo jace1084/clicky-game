@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import MemCard from "../components/Card";
-import Wrapper from "../components/Wrapper";
-import Title from "../components/Title";
-import matches from "../matchcards.json";
+import MemCard from "./components/MemCard/Card";
+import Wrapper from "./components/WrapperCom/Wrapper";
+import Title from "./components/TitleCom/Title";
+import matches from "./matchcards.json";
 import "./App.css";
 
 let correctGuesses = 0;
 let bestScore = 0;
-let clickStatement = "Click on an image to earn points, but don't click on any of them more than once!";
+let clickStatement = "It's Futile, you'll never remember all of them. Don't click a card twice!";
 
 class App extends Component {
     
@@ -35,7 +35,7 @@ class App extends Component {
             console.log ("Best Score: " + bestScore);
 
             correctGuesses = 0;
-            clickStatement = "Dang! You already clicked on that one! Now you have to start over!"
+            clickStatement = "HA! You already clicked on that one! Now you have to start over!"
 
             for (let i = 0 ; i < matches.length ; i++){
                 matches[i].clicked = false;
@@ -54,7 +54,7 @@ class App extends Component {
             // increment the appropriate counter
             correctGuesses++;
             
-            clickStatement = "Great! You haven't click on that one yet! Keep going!";
+            clickStatement = "Amaze-balls! You haven't click on that one yet! Do you dare to keep trying?";
 
             if (correctGuesses > bestScore){
                 bestScore = correctGuesses;
@@ -77,7 +77,7 @@ class App extends Component {
             correctGuesses = 0;
 
             // Egg on the user to play again
-            clickStatement = "WOW!!! You got ALL of them!!! Now, let's see if you can do it again!";
+            clickStatement = "Victory is Yours! You got ALL of them!!!";
             bestScore = 12;
             this.setState({ bestScore });
             
@@ -99,7 +99,7 @@ class App extends Component {
     render() {
         return (
             <Wrapper>
-                <Title>To boldly click where no one has clicked before!</Title>
+                <Title>Family Guy Memory Game!</Title>
         
                 <h3 className="scoreSummary">
                     {this.state.clickStatement}

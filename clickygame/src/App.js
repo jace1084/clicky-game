@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Card from "./components/Card";
-import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
-import matches from "./matchcards.json";
+import MemCard from "../components/Card";
+import Wrapper from "../components/Wrapper";
+import Title from "../components/Title";
+import matches from "../matchcards.json";
 import "./App.css";
 
 let correctGuesses = 0;
@@ -112,7 +112,7 @@ class App extends Component {
                 </h3>
 
                 {this.state.matches.map(match => (
-                    <Card
+                    <MemCard
                         setClicked={this.setClicked}
                         id={match.id}
                         key={match.id}

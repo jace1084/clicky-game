@@ -1,129 +1,127 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Card from "./components/Card";
+import Wrapper from "./components/Wrapper";
+import Title from "./components/Title";
 import matches from "./matchcards.json";
-// const Shuffle = window.Shuffle;
+import "./App.css";
 
-
-// set varibles to store your users guesses, score, and event message (in this case a "click" event). 
-// These varibles will be set as "let" becasue their values will change as the game goes along.
-
-// all values will be set to 0 to begin the game at 0.
-
-let correctGuesses = 0; 
+let correctGuesses = 0;
 let bestScore = 0;
-let clickStatement = "Click on your favorite Family Guy character to earn points, but be sure to remember who you clicked...This is a memory game PEOPLE!";
+let clickStatement = "Click on an image to earn points, but don't click on any of them more than once!";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
+    
+    // Setting this.state.matches to the matches json array
+    state = {
+        matches,
+        correctGuesses,
+        bestScore,
+        clickStatement
+    };
 
-  state = {
-    matches,
-    correctGuesses,
-    bestScore,
-    clickStatement
-};
-  };
+    setClicked = id => {
 
-setClicked = id => {
-  const matches = this.state.matches;
-  const clickedMatch = matches.filter(match => match.id === id);
+        // Make a copy of the state matches array to work with
+        const matches = this.state.matches;
 
+        // Filter for the clicked match
+        const clickedMatch = matches.filter(match => match.id === id);
 
-  if(clickedMatch[0].clicked){
+        // If the matched image's clicked value is already true, 
+        // do the game over actions
+        if (clickedMatch[0].clicked){
 
-  correctGuesses = 0;
-            clickMessage = "Dammit! You memory sucks! You clicked that already"
+            console.log ("Correct Guesses: " + correctGuesses);
+            console.log ("Best Score: " + bestScore);
 
-            matches.map(match => match.id === id);
-            matches.clicked = false;
+            correctGuesses = 0;
+            clickStatement = "Dang! You already clicked on that one! Now you have to start over!"
 
-  
-            this.setState({clickMessage});
+            for (let i = 0 ; i < matches.length ; i++){
+                matches[i].clicked = false;
+            }
+
+            this.setState({clickStatement});
             this.setState({ correctGuesses });
             this.setState({matches});
 
-  } else if(correctGuesses < 11){
+        // Otherwise, if clicked = false, and the user hasn't finished
+        } else if (correctGuesses < 11) {
 
-  // Set its value to true
-  clickedMatch[0].clicked = true;
+            // Set its value to true
+            clickedMatch[0].clicked = true;
 
-  // increment the appropriate counter
-  correctGuesses++;
-
-  clickMessage = "Victory is yours! You haven't selected that card yet";
-
-  if (correctGuesses > bestScore){
-      bestScore = correctGuesses;
-      this.setState({ bestScore });
-  }
-
-  shuffleData = data => {
-    let i = data.length - 1;
-    while (i > 0) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = data[i];
-      data[i] = data[j];
-      data[j] = temp;
-      i--;
-    }
-    return data;
-  };
-
-} else {
-
-  // Set its value to true
-  clickedMatch[0].clicked = true;
-
-  // restart the guess counter
-  correctGuesses = 0;
-
-  
-  clickMessage = "WOW!!! You got ALL of them!!! Now, let's see if you can do it again!";
-  bestScore = 12;
-  this.setState({ bestScore });
-  
-  for (let i = 0 ; i < matches.length ; i++){
-      matches[i].clicked = false;
-  };
-
-  shuffleData = data => {
-    let i = data.length - 1;
-    while (i > 0) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = data[i];
-      data[i] = data[j];
-      data[j] = temp;
-      i--;
-    }
-    return data;
-  };
-
-  // render() {
-  //   return (
-  //       <Wrapper>
-  //           <Title>Family Guy Memory Game</Title>
-    
-  //           <h3 className="scoreSummary">
-  //               {this.state.clickMessage}
-  //           </h3>
+            // increment the appropriate counter
+            correctGuesses++;
             
-  //           <h3 className="scoreSummary">
-  //               Correct Guesses: {this.state.correctGuesses} 
-  //               <br />
-  //               Best Score: {this.state.bestScore} 
-  //           </h3>
+            clickStatement = "Great! You haven't click on that one yet! Keep going!";
 
-  //           {this.state.matches.map(match => (
-  //               <MatchCard
-  //                   setClicked={this.setClicked}
-  //                   id={match.id}
-  //                   key={match.id}
-  //                   image={match.image}
-  //               />
-  //           ))}
-  //       </Wrapper>
-  // }
-  //   );
-    export default App;
+            if (correctGuesses > bestScore){
+                bestScore = correctGuesses;
+                this.setState({ bestScore });
+            }
+
+            // Shuffle the array to be rendered in a random order
+            matches.sort(function(a, b){return 0.5 - Math.random()});
+
+            // Set this.state.matches equal to the new matches array
+            this.setState({ matches });
+            this.setState({correctGuesses});
+            this.setState({clickStatement});
+        } else {
+
+            // Set its value to true
+            clickedMatch[0].clicked = true;
+
+            // restart the guess counter
+            correctGuesses = 0;
+
+            // Egg on the user to play again
+            clickStatement = "WOW!!! You got ALL of them!!! Now, let's see if you can do it again!";
+            bestScore = 12;
+            this.setState({ bestScore });
+            
+            for (let i = 0 ; i < matches.length ; i++){
+                matches[i].clicked = false;
+            }
+
+            // Shuffle the array to be rendered in a random order
+            matches.sort(function(a, b){return 0.5 - Math.random()});
+
+            // Set this.state.matches equal to the new matches array
+            this.setState({ matches });
+            this.setState({correctGuesses});
+            this.setState({clickStatement});
+
+        }
+    };
+
+    render() {
+        return (
+            <Wrapper>
+                <Title>To boldly click where no one has clicked before!</Title>
+        
+                <h3 className="scoreSummary">
+                    {this.state.clickStatement}
+                </h3>
+                
+                <h3 className="scoreSummary">
+                    Correct Guesses: {this.state.correctGuesses} 
+                    <br />
+                    Best Score: {this.state.bestScore} 
+                </h3>
+
+                {this.state.matches.map(match => (
+                    <Card
+                        setClicked={this.setClicked}
+                        id={match.id}
+                        key={match.id}
+                        image={match.image}
+                    />
+                ))}
+            </Wrapper>
+        );
+    }
+}
+
+export default App;
